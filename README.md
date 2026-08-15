@@ -4,8 +4,7 @@ A simple and minimal Bash manager for running an **AzerothCore WotLK**
 server with Docker.
 
 The manager provides a single interface to install, configure, build,
-update and manage the server without having to remember multiple Docker
-and Git commands.
+update and manage the server.
 
 > [!IMPORTANT]
 > **Portable Docker setup**
