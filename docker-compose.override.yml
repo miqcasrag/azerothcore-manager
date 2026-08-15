@@ -1,0 +1,33 @@
+# Portable local overrides for AzerothCore.
+#
+# This file is intentionally kept separate from docker-compose.yml so the
+# upstream file can continue to be updated with git pull.
+#
+# Persistent/generated Docker data is stored under ./volumes/.
+
+services:
+  ac-database:
+    volumes: !reset
+      - ./volumes/ac-database:/var/lib/mysql
+
+  ac-worldserver:
+    volumes: !reset
+      - ${DOCKER_VOL_ETC:-./env/dist/etc}:/azerothcore/env/dist/etc
+      - ${DOCKER_VOL_LOGS:-./env/dist/logs}:/azerothcore/env/dist/logs:delegated
+      - ./volumes/ac-client-data:/azerothcore/env/dist/data/:ro
+
+  ac-authserver:
+    volumes: !reset
+      - ${DOCKER_VOL_ETC:-./env/dist/etc}:/azerothcore/env/dist/etc
+      - ${DOCKER_VOL_LOGS:-./env/dist/logs}:/azerothcore/env/dist/logs:delegated
+
+  ac-client-data-init:
+    volumes: !reset
+      - ./volumes/ac-client-data:/azerothcore/env/dist/data
+
+  ac-dev-server:
+    volumes: !reset
+      - ${DOCKER_VOL_ROOT:-.}:/azerothcore:cached
+      - ./volumes/ac-build-dev:/azerothcore/var/build
+      - ./volumes/ac-ccache-dev:/azerothcore/var/ccache
+      - ${DOCKER_AC_CLIENT_FOLDER:-./var/client}:/azerothcore/env/dist/bin/Data
