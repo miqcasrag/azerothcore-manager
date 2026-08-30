@@ -123,15 +123,6 @@ Views and changes the realmlist's public address and/or local address.
 - **Client reminder** — Suggests the matching `realmlist.wtf` line to
   update on the client after applying a change.
 
-## Supported Modules
-
-- `mod-playerbots` (required, managed by `ac-manager.sh`)
-- `mod-ah-bot-plus`
-- `mod-autobalance`
-- `mod-challenge-modes`
-- `mod-individual-progression`
-- `mod-dungeon-clear`
-
 ## Installation
 
 ```bash
