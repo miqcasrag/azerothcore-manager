@@ -175,9 +175,18 @@ file instead of six — install/start/stop/backups/updates, module
 management, idle-pause sleep, scheduled backups, account management, and
 network configuration, all reachable from one menu or one command.
 
-```bash
-chmod +x ac-aio.sh
+### Installation
 
+```bash
+git clone https://github.com/miqcasrag/azerothcore-manager.git
+cd azerothcore-manager
+chmod +x ac-aio.sh
+./ac-aio.sh
+```
+
+### Usage
+
+```bash
 ./ac-aio.sh              # interactive top-level menu (pick a section)
 ./ac-aio.sh manager       # same as ac-manager.sh
 ./ac-aio.sh modules       # same as ac-modules.sh
