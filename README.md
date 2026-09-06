@@ -9,6 +9,10 @@ scripts add module management, idle-pausing, scheduled backups, account
 management, and realmlist/network configuration. Every script is fully
 independent and can be installed and used on its own.
 
+> **Prefer a single file?** [`ac-aio.sh`](#ac-aiosh-separate-project) is a
+> separate, all-in-one build that combines all six scripts above into one
+> file with a unified menu — see its own section near the bottom.
+
 ## ac-manager.sh (main script)
 
 - **Installation** — Automatically installs dependencies, clones the
@@ -158,3 +162,30 @@ chmod +x ac-modules.sh ac-sleep.sh ac-backup.sh ac-account.sh ac-network.sh
 ./ac-account.sh    # account creation and GM level management
 ./ac-network.sh    # realmlist address configuration
 ```
+
+## ac-aio.sh (separate project)
+
+A separate, all-in-one build that merges all six scripts above into a
+single file, with one unified top-level menu and CLI. It is not part of
+the modular toolkit above — it doesn't need any of those six scripts
+present, and it isn't kept in sync line-for-line with them going forward.
+
+Same functionality as the six scripts combined, just distributed as one
+file instead of six — install/start/stop/backups/updates, module
+management, idle-pause sleep, scheduled backups, account management, and
+network configuration, all reachable from one menu or one command.
+
+```bash
+chmod +x ac-aio.sh
+
+./ac-aio.sh              # interactive top-level menu (pick a section)
+./ac-aio.sh manager       # same as ac-manager.sh
+./ac-aio.sh modules       # same as ac-modules.sh
+./ac-aio.sh sleep enable  # same as ac-sleep.sh enable
+./ac-aio.sh backup run --quiet
+./ac-aio.sh account create Someone
+./ac-aio.sh network show
+```
+
+Each section accepts exactly the same subcommands its standalone script
+did — run `./ac-aio.sh <section> --help` to see them.
